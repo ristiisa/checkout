@@ -669,6 +669,9 @@ class GitCommandManager {
             else if (fshelper.fileExistsSync(path.join(this.workingDirectory, '.git', 'shallow'))) {
                 args.push('--unshallow');
             }
+            if (options.bare) {
+                args.push(`--bare`)
+            }
             args.push('origin');
             for (const arg of refSpec) {
                 args.push(arg);
