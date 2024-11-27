@@ -159,6 +159,7 @@ export async function getSource(settings: IGitSourceSettings): Promise<void> {
     const fetchOptions: {
       filter?: string
       fetchDepth?: number
+      bare?: boolean
       fetchTags?: boolean
       showProgress?: boolean
     } = {}

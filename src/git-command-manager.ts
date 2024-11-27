@@ -36,6 +36,7 @@ export interface IGitCommandManager {
     options: {
       filter?: string
       fetchDepth?: number
+      bare?: boolean
       fetchTags?: boolean
       showProgress?: boolean
     }
@@ -256,6 +257,7 @@ class GitCommandManager {
     options: {
       filter?: string
       fetchDepth?: number
+      bare?: boolean
       fetchTags?: boolean
       showProgress?: boolean
     }
@@ -282,6 +284,10 @@ class GitCommandManager {
       )
     ) {
       args.push('--unshallow')
+    }
+
+    if (options.bare) {
+      args.push(`--bare`)
     }
 
     args.push('origin')
