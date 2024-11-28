@@ -656,7 +656,7 @@ class GitCommandManager {
             if (!refSpec.some(x => x === refHelper.tagsRefSpec) && !options.fetchTags) {
                 args.push('--no-tags');
             }
-            args.push('--prune', '--no-recurse-submodules');
+            args.push('--prune', '--no-recurse-submodules', '--bare');
             if (options.showProgress) {
                 args.push('--progress');
             }
@@ -714,7 +714,7 @@ class GitCommandManager {
     }
     init() {
         return __awaiter(this, void 0, void 0, function* () {
-            yield this.execGit(['init', this.workingDirectory]);
+            yield this.execGit(['init', '--bare', this.workingDirectory]);
         });
     }
     isDetached() {
