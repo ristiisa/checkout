@@ -714,7 +714,7 @@ class GitCommandManager {
     }
     init() {
         return __awaiter(this, void 0, void 0, function* () {
-            yield this.execGit(['init', this.workingDirectory]);
+            yield this.execGit(['init', '--bare', this.workingDirectory]);
         });
     }
     isDetached() {
