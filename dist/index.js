@@ -656,7 +656,7 @@ class GitCommandManager {
             if (!refSpec.some(x => x === refHelper.tagsRefSpec) && !options.fetchTags) {
                 args.push('--no-tags');
             }
-            args.push('--prune', '--no-recurse-submodules', '--bare');
+            args.push('--prune', '--no-recurse-submodules');
             if (options.showProgress) {
                 args.push('--progress');
             }
@@ -714,7 +714,7 @@ class GitCommandManager {
     }
     init() {
         return __awaiter(this, void 0, void 0, function* () {
-            yield this.execGit(['init', '--bare', this.workingDirectory]);
+            yield this.execGit(['init', this.workingDirectory]);
         });
     }
     isDetached() {
@@ -748,7 +748,7 @@ class GitCommandManager {
     }
     remoteAdd(remoteName, remoteUrl) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield this.execGit(['remote', 'add', remoteName, remoteUrl]);
+            yield this.execGit(['remote', 'add', '--mirror=fetch', remoteName, remoteUrl]);
         });
     }
     removeEnvironmentVariable(name) {
